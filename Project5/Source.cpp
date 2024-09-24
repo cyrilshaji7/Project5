@@ -37,7 +37,7 @@ void readStudentData(const string& filename, vector<STUDENT_DATA>& students) {
 
 void displayStudents(const vector<STUDENT_DATA>& students) {
     cout << "Student List:\n";
-    for (auto& student : students) {
+    for (const auto& student : students) {
         cout << student.firstName << " " << student.lastName << endl;
     }
 }
@@ -47,7 +47,13 @@ int main() {
 
     readStudentData("C:\\Users\\Cyril\\Downloads\\resource-files\\StudentData.txt", students);
 
-    displayStudents(students);
+#ifdef _DEBUG
+    cout << "Debug Mode: Printing all student information:\n";
+    for (const auto& student : students) {
+        cout << "First Name: " << student.firstName << ", Last Name: " << student.lastName << endl;
+    }
+#endif
+
 
     return 1;
 }
